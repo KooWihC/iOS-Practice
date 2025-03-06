@@ -159,7 +159,7 @@ for i in 1...9
 {
     for j in 1...9
     {
-        print("\(i) * \(j) = \(i*j) ")
+        print("\(i) X \(j) = \(i*j) ")
     }
     print("")
 }
