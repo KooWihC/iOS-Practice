@@ -11,7 +11,8 @@ class NationViewController: UIViewController {
 
     var nation: Nation?
     
-    @IBOutlet weak var descLabel: UILabel!
+    @IBOutlet weak var descText: UITextView!
+    //@IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var flagImg: UIImageView!
     @IBOutlet weak var nationLabel: UILabel!
     @IBOutlet weak var groupLabel: UILabel!
@@ -29,13 +30,16 @@ class NationViewController: UIViewController {
 //            groupLabel.text = nation.group + "조"
 //        }
         guard let nation = nation else { return }
-        descLabel.text = nation.description
+        //descLabel.text = nation.description
         flagImg.image = UIImage(named: nation.flag)
         flagImg.contentMode = .scaleAspectFill
-        nationLabel.text = nation.name
-        groupLabel.text = nation.group + "조"
-
         
+        nationLabel.text = nation.name
+        
+        groupLabel.text = nation.group + "조"
+        
+        descText.text = nation.description
+        descText.font = .systemFont(ofSize: 20)
     }
     
 

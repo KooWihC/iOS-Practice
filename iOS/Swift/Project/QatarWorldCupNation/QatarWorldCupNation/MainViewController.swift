@@ -43,12 +43,13 @@ class MainViewController: UITableViewController {
             // Nation의 이름 설정 (예: tag 2로 지정된 UILabel)
             if let nameLabel = cell.viewWithTag(2) as? UILabel {
                 nameLabel.text = nation.name
+                nameLabel.font = .boldSystemFont(ofSize: 20)
             }
             
             // Nation의 flag 이미지를 설정 (예: tag 1로 지정된 UIImageView)
             if let flagImageView = cell.viewWithTag(1) as? UIImageView {
                 flagImageView.image = UIImage(named: nation.flag)
-                flagImageView.contentMode = .scaleAspectFill
+                flagImageView.contentMode = .scaleAspectFit
             }
         }
 //        if let nationList = nations[key]
@@ -68,7 +69,14 @@ class MainViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
     {
-        return sectionTitles[section]
+        let group = sectionTitles[section]
+        return "\(group)조"
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String?
+    {
+        let group = sectionTitles[section]
+        return "\(group)조"
     }
 
     /*
