@@ -56,7 +56,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="FiJ-ls-e3C" kind="show" id="a9M-tL-VpE"/>
+                                    <segue destination="FiJ-ls-e3C" kind="show" identifier="Detail" id="a9M-tL-VpE"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -66,9 +66,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="BTS" id="Pbv-qI-aLI">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="add" id="iRR-ap-4pg">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="iRR-ap-4pg">
                             <connections>
-                                <segue destination="vMQ-qQ-tgF" kind="show" id="gRR-cs-G5z"/>
+                                <segue destination="vMQ-qQ-tgF" kind="show" identifier="Add" id="gRR-cs-G5z"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -117,6 +117,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="추가"/>
+                                <connections>
+                                    <action selector="addBtn:" destination="vMQ-qQ-tgF" eventType="touchUpInside" id="RH4-CW-AoC"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="이름을 입력해 주세요" borderStyle="bezel" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t1d-SE-ldX">
                                 <rect key="frame" x="87" y="551" width="217" height="34"/>
@@ -130,6 +133,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="JQH-U2-tGq"/>
+                    <connections>
+                        <outlet property="imageView" destination="PDk-96-aMm" id="tcG-Ii-49i"/>
+                        <outlet property="nickTxt" destination="WrF-AA-cC1" id="KuB-KU-KGE"/>
+                        <outlet property="txtDesc" destination="QLl-4R-vGY" id="m6M-Xw-HGD"/>
+                        <outlet property="txtName" destination="t1d-SE-ldX" id="Xtw-dO-pgG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1fw-wM-pTB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

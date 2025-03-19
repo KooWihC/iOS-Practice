@@ -1,18 +1,20 @@
 //
-//  BTSTableViewController.swift
-//  BTSApp
+//  DiaryTableTableViewController.swift
+//  DiaryApp
 //
-//  Created by Chiwook Ahn on 3/18/25.
+//  Created by Chiwook Ahn on 3/19/25.
 //
 
 import UIKit
 
-class BTSTableViewController: UITableViewController {
+class DiaryTableTableViewController: UITableViewController {
 
-    var bts: NSMutableArray?
-    let fileName = "bts.plist"
+    var diary: NSMutableArray?
+    let fileName = "diary.plist"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
         let targetURL = urlForFileName(fileName)
         let fileManager = FileManager.default
         
@@ -31,19 +33,18 @@ class BTSTableViewController: UITableViewController {
         print(targetURL)
         do
         {
-            bts = try NSMutableArray(contentsOf: targetURL, error: ())
+            diary = try NSMutableArray(contentsOf: targetURL, error: ())
         }
         catch
         {
             print("파일을 여는데 실패했습니다.")
         }
-        // bts = try? NSMutableArray(contentsOf: targetURL, error: ()) 이렇게 예외처리 할 수 있음
-        // bts = try! NSMutableArray(contentsOf: targetURL, error: ()) 이렇게도 가능
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
 
@@ -56,27 +57,18 @@ class BTSTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return bts?.count ?? 0
+        return diary?.count ?? 0
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "bts", for: indexPath)
-        guard let member = bts?[indexPath.row] as? [String:String] else { return cell }
-     //   print(member)
-        let imageView = cell.viewWithTag(1) as? UIImageView
-        let nicklbl = cell.viewWithTag(2) as? UILabel
-        let namelbl = cell.viewWithTag(3) as? UILabel
-        let desclbl = cell.viewWithTag(4) as? UILabel
-       
-        if let imageName = member["image"]
-        {
-            imageView?.image = UIImage(named: imageName)
-        }
-        nicklbl?.text = member["nick"]
-        namelbl?.text = member["name"]
-        desclbl?.text = member["desc"]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "diary", for: indexPath)
+
+        guard let member = diary?[indexPath.row] as? [String:String] else { return cell }
         
+        let imageView = cell.viewWithTag(1) as? UIImageView
+        let datelbl = cell.viewWithTag(2) as? UILabel
+
         return cell
     }
     
@@ -89,41 +81,24 @@ class BTSTableViewController: UITableViewController {
     }
     */
 
-    
+    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            bts?.removeObject(at: indexPath.row)
-            do
-            {
-                try bts?.write(to: urlForFileName(fileName))
-            }
-            catch
-            {
-                print(error.localizedDescription)
-            }
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-            let newMember = ["nick":"ChiChi", "name":"안치욱", "desc":"8번째 멤버", "image":"default"]
-            bts?.insert(newMember, at: indexPath.row)
-            try? bts?.write(to: urlForFileName(fileName))
-            tableView.insertRows(at: [indexPath], with: .automatic)
-        }
+        }    
     }
-    
+    */
 
-    
+    /*
     // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath)
-    {
-        guard let temp = bts?[fromIndexPath.row] else { return }
-        bts?.removeObject(at: fromIndexPath.row)
-        bts?.insert(temp, at: to.row)
-        try? bts?.write(to: urlForFileName(fileName))
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+
     }
-    
+    */
 
     /*
     // Override to support conditional rearranging of the table view.
@@ -133,26 +108,14 @@ class BTSTableViewController: UITableViewController {
     }
     */
 
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-//        if segue.identifier == "Detail"
-//        {
-//            
-//        }
-//        else
-//        {
-//            return
-//        }
-        guard let indexPath = tableView.indexPathForSelectedRow, let targetVC = segue.destination as? MemberViewController else { return }
-        
-        let member = bts?[indexPath.row] as? [String:String]
-        targetVC.member = member
     }
-    
+    */
 
 }
