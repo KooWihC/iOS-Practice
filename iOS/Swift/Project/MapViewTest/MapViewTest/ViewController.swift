@@ -26,7 +26,7 @@ class ViewController: UIViewController {
 //        pin.subtitle = "비트컴퓨터"
 //        mapView.addAnnotation(pin)
         
-        let pin = CustomAnnotation(coordinate: location, title: "iOS 풀스택 개발과정", subtitle: "IT여성기업인협회", thumbnail: "Unknown-2", strURL: "http://www.github.com/KooWihC")
+        let pin = CustomAnnotation(coordinate: location, title: "iOS 풀스택 개발과정", subtitle: "IT여성기업인협회", thumbnail: "kibwa", strURL: "http://www.kibwa.org")
         mapView.addAnnotation(pin)
         mapView.delegate = self
     }
